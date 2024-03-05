@@ -1,0 +1,23 @@
+sudo touch stack.c
+sudo touch attack.py
+sudo touch badfile
+sudo chmod 777 stack.c
+sudo chmod 777 attack.py
+sudo chmod 777 badfile
+
+sudo sysctl -w kernel.randomize_va_space=0
+sudo ln -sf /bin/zsh /bin/sh
+
+
+sudo gcc -o stack -z execstack -fno-stack-protector stack.c
+sudo chown root stack
+sudo chmod 4755 stack
+sudo gcc -o stack_dbg -g -z execstack -fno-stack-protector stack.c
+
+sudo python3 attack.py
+sudo echo 'ava' > badfile
+https://defuse.ca/online-x86-assembler.htm#disassembly
+
+
+
+
